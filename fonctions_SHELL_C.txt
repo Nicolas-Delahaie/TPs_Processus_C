@@ -1,0 +1,28 @@
+----- SHELL ------
+Par la commande ps :
+– USER : utilisateur ayant lancé le processus
+– PID : n° de processus
+– %CPU : % d’utilisation du CPU
+– %MEM : % d’utilisation de la mémoire
+– VSZ : utilisation des bibliothèques partagées
+– RSS : utilisation de la mémoire physique (en Ko)
+– STAT : état du processus
+– START : date de démarrage du processus
+– TIME : temps CPU utilisé par le processus
+– CMD : nom du programme
+
+ps -e : pour voir les processus résidents (démons)
+
+
+
+
+----- C ------
+pid_t getpid() retourne le numéro de processus
+pid_t getppid() retourne le numéro du processus père
+sleep(unsigned int n) met en attente le processus pour n secondes
+usleep(unsigned int n) met en attente le processus pour n microsecondes (précision exagérée  pas forcément exactement respectée)
+pause() met en attente le processus jusqu'à l'arrivée d'un signal
+exit(int etat) renvoie la valeur de sortie de la fin du processus fils
+int wait(int *etat) attend la termination de ses fils. Si un fils était déjà terminé wait se termine immédiatement et renvoie le pid de ce fils. S'il n'y a plus de fils en cours wait se termine immédiatement et renvoie -1. Sinon wait attend la fin du 1er fils et retourne son pid
+
+
