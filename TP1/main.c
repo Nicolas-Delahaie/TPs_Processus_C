@@ -8,9 +8,9 @@ int main()
 {
     /*------------------- 1 -------------------*/
     // printf("Je suis le numero %d\n", getpid());
-    pid_t pid = fork();                      // A partir de là on 2 processus : le père et son clone de fils, sauf si id = -1
+    pid_t pid = fork(); // A partir de là on 2 processus : le père et son clone de fils, sauf si id = -1
     // printf("Fork m a renvoyé la valeur %d\n", pid);
-    
+
     // switch (pid)
     // {
     // case -1 :           // La création du processus a échoué
@@ -26,9 +26,9 @@ int main()
     //     break;
     // }
 
-    /*------------------- 2 -------------------*/   
-    // unsigned short int nb;                
-    
+    /*------------------- 2 -------------------*/
+    // unsigned short int nb;
+
     // switch (pid)
     // {
     // case -1 :           // La création du processus a échoué
@@ -57,30 +57,29 @@ int main()
     //         nb += 2;
     //     }
     //     printf("\n");
-        
+
     //     break;
     // }
 
     /*----------------- 3/4/5 -----------------*/
     switch (pid)
     {
-    case 0:     //Fils
+    case 0: // Fils
         // execlp("cmde", "cmde", "param" , "-p", NULL);           //Ex 3
-        execl("cmde", "cmde", "param" , "-p", NULL);            //Ex 4
-        exit(EXIT_SUCCESS); // ne sert que si execlp échoue
+        execl("cmde", "cmde", "param", "-p", NULL); // Ex 4
+        exit(EXIT_SUCCESS);                         // ne sert que si execlp échoue
         break;
-    
-    default:    //Pere
+
+    default: // Pere
 
         break;
     }
 
-    int etat ; // valeur de retour du processus fils
-    wait(&etat) ; // attente de terminaison du processus fils
-    if (WEXITSTATUS(etat) == EXIT_SUCCESS) printf("%d\n",etat);
+    int etat;    // valeur de retour du processus fils
+    wait(&etat); // attente de terminaison du processus fils
+    if (WEXITSTATUS(etat) == EXIT_SUCCESS)
+        printf("%d\n", etat);
     exit(EXIT_SUCCESS); // terminaison du père
 
-
-
-    return  911;
+    return 911;
 }
